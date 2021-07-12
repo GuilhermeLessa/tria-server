@@ -7,7 +7,9 @@ const expenseService = {
         const id = await expenseDataProvider.insert(expense);
         return { id, ...expense };
     },
+    
     update: (expense) => expenseDataProvider.update(expense),
+    
     delete: (expenseId) => expenseDataProvider.delete(expenseId),
 };
 
