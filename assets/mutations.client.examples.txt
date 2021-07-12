@@ -1,0 +1,41 @@
+### INSERT
+mutation($client: ClientInsertInput) {
+  insertClient(client: $client) {
+    id, company, name, phone, email
+  }
+}
+>> data >>
+{
+  "client": {
+    "company": "Tesla",
+    "name": "Elon Musk",
+    "phone": "+10 (66) 76622 0201",
+    "email": "muskelon@as.tesla.com"
+  }
+}
+
+### UPDATE
+mutation($client: ClientUpdateInput) {
+  updateClient(client: $client) {
+    id, company, name, phone, email
+  }
+}
+>> data >>
+{
+  "client": {
+    "id": 21,
+    "company": "Tesla Inc.",
+    "name": "Elon Musk",
+    "phone": "+10 (66) 76622 0201",
+    "email": "muskelon@as.tesla.com"
+  }
+}
+
+##DELETE
+mutation($id: Int!) {
+  deleteClient(id: $id)  
+}
+>> data >>
+{
+  "id": 67
+}

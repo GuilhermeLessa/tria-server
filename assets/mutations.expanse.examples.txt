@@ -1,0 +1,38 @@
+### INSERT
+mutation($expense: ExpenseInsertInput) {
+  insertExpense(expense: $expense) {
+    id, value, date, clientId
+  }
+}
+>> data >>
+{
+  "expense": {
+    "value": 1500,
+    "date": "2021-07-11 18:00:00",
+    "clientId": 21
+  }
+}
+
+### UPDATE
+mutation($expense: ExpenseUpdateInput) {
+  updateExpense(expense: $expense) {
+    id, value, date, clientId
+  }
+}
+>> data >>
+{
+  "expense": {
+    "id": 3,
+    "value": 1200,
+    "date": "2021-08-11 18:00:00"
+  }
+}
+
+##DELETE
+mutation($id: Int!) {
+  deleteExpense(id: $id)  
+}
+>> data >>
+{
+  "id": 17
+}

@@ -1,0 +1,28 @@
+{
+  "name": "tria-server",
+  "version": "1.0.0",
+  "description": "A Node GraphQL HTTP Server to test the new fullstack developers.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GuilhermeLessa/tria-server.git"
+  },
+  "author": "Guilherme Lessa",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^2.25.2",
+    "graphql": "^15.5.1",
+    "graphql-parse-resolve-info": "^4.12.0",
+    "pg-promise": "^10.10.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  },
+  "bugs": {
+    "url": "https://github.com/GuilhermeLessa/tria-server/issues"
+  },
+  "homepage": "https://github.com/GuilhermeLessa/tria-server#readme"
+}
