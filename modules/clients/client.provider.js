@@ -8,10 +8,12 @@ module.exports = {
         LEFT JOIN expenses e ON e.client_id = c.id
         ORDER BY c.id, e.date
     `),
+    
     getOne: (clientId) => database.oneOrNone(`
         SELECT id, company, name, phone, email 
         FROM clients WHERE id = $1
     `, clientId),
+    
     getMonthlyExpense: async (clientId, fullYear, month) => {
         const monthlyExpense = await database.one(`
             SELECT ROUND(
@@ -33,6 +35,7 @@ module.exports = {
         `, [clientId, fullYear, month]);
         return { fullYear, month, dailyAverage: monthlyExpense.daily_average };
     },
+    
     getExpenses: (clientId, startDate, endDate) => {
         let queryParams = [clientId];
         let dateBetween = '';
@@ -56,11 +59,13 @@ module.exports = {
             ORDER BY date
         `, queryParams)
     },
+    
     insert: async (client) => (await database.one(`
         INSERT INTO clients (\${this:name}) 
         VALUES (\${this:csv}) 
         RETURNING id
     `, client)).id,
+    
     update: (client) => {
         let _client = { ...client };
         delete _client.id;
@@ -73,6 +78,7 @@ module.exports = {
 
         return database.one(query);
     },
+    
     delete: async (clientId) => {
         const result = await database.oneOrNone(`
             DELETE FROM clients 
