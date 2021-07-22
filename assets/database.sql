@@ -1,5 +1,3 @@
-CREATE DATABASE tria;
-
 CREATE SEQUENCE clients_id_seq;
 CREATE TABLE clients (
 	id INTEGER PRIMARY KEY NOT NULL DEFAULT nextval('clients_id_seq'),

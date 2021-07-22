@@ -1,0 +1,36 @@
+version: '3'
+
+networks:
+    tria-server-network:
+        driver: bridge
+
+services:
+    postgres:
+        build:
+            dockerfile: ./docker/postgres.dockerfile
+            context: .
+        image: tria-server/postgres
+        container_name: tria-server-postgres
+        ports: 
+            - "5432:5432"
+        networks: 
+            - tria-server-network
+
+    node:
+        build:
+            dockerfile: ./docker/node.dockerfile
+            context: .
+        image: tria-server/node
+        container_name: tria-server-node
+        environment: 
+            DB_HOST: postgres
+            DB_USER: postgres
+            DB_PASSWORD: postgres
+            DB_NAME: postgres
+            DB_PORT: 5432
+        ports: 
+            - "4000:4000"
+        networks: 
+            - tria-server-network
+        depends_on: 
+            - postgres    

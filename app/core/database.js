@@ -5,11 +5,11 @@ pgp.pg.types.setTypeParser(1700, (value) => {
 pgp.pg.defaults.poolSize = 5;
 
 const db = pgp({
-	database: 'tria',
-	user: 'postgres',
-	password: 'postgres',
-	host: 'localhost',
-	port: 5432,
+	host: process.env.DB_HOST,
+	user: process.env.DB_USER,
+	password: process.env.DB_PASSWORD,
+	database: process.env.DB_NAME,
+	port: process.env.DB_PORT,
 	max: 10,
 	idleTimeoutMillis: 30000
 });
