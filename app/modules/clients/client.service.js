@@ -27,7 +27,7 @@ const clientService = {
 
         return _response;
     },
-    
+
     getClient: async (clientId, monthlyExpense, expenses) => {
         const client = await clientDataProvider.getOne(clientId);
         const _response = { ...client };
@@ -59,14 +59,14 @@ const clientService = {
 
         return _response;
     },
-    
+
     insert: async (client) => {
         const id = await clientDataProvider.insert(client);
         return { id, ...client };
     },
-    
+
     update: (client) => clientDataProvider.update(client),
-    
+
     delete: (clientId) => clientDataProvider.delete(clientId),
 };
 

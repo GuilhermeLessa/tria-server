@@ -11,7 +11,7 @@ module.exports = {
             RETURNING id
         `, _expense)).id;
     },
-    
+
     update: async (expense) => {
         let _expense = { ...expense };
         delete _expense.id;
@@ -27,7 +27,7 @@ module.exports = {
         delete _expense.client_id;
         return _expense;
     },
-    
+
     delete: async (expenseId) => {
         const result = await databaseService.oneOrNone(`
             DELETE FROM expenses 

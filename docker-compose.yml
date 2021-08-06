@@ -11,9 +11,9 @@ services:
             context: .
         image: tria-server/postgres
         container_name: tria-server-postgres
-        ports: 
+        ports:
             - "5432:5432"
-        networks: 
+        networks:
             - tria-server-network
 
     node:
@@ -22,15 +22,15 @@ services:
             context: .
         image: tria-server/node
         container_name: tria-server-node
-        environment: 
+        environment:
             DB_HOST: postgres
             DB_USER: postgres
             DB_PASSWORD: postgres
             DB_NAME: postgres
             DB_PORT: 5432
-        ports: 
+        ports:
             - "4000:4000"
-        networks: 
+        networks:
             - tria-server-network
-        depends_on: 
-            - postgres    
+        depends_on:
+            - postgres

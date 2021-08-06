@@ -1,5 +1,5 @@
 FROM node:12
-LABEL maintainer="Guilherme Lessa"	
+LABEL maintainer="Guilherme Lessa"
 COPY /app /var/www
 COPY package*.json /var/www
 WORKDIR /var/www

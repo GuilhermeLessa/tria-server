@@ -61,6 +61,6 @@ exposedObject.prototype = {
         });
         server.listen();
     }
-}
+};
 
 module.exports = exposedObject;

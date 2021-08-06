@@ -14,4 +14,4 @@ module.exports = {
             { 'Content-Type': 'application/json' }
         )
     }
-}
+};
