@@ -4,6 +4,7 @@ A Node Server to test the new fullstack developers.
 :white_check_mark: GraphQL <br>
 :white_check_mark: Docker <br>
 :white_check_mark: AWS Lambda <br>
+:white_check_mark: Node.js <br>
 :white_check_mark: Vanilla JS <br>
 
 <br>
