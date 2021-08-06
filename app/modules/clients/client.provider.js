@@ -1,7 +1,7 @@
-const database = require('../../core/database');
+const databaseService = require('../../core/database.service');
 
 module.exports = {
-    getAll: () => database.manyOrNone(`
+    getAll: () => databaseService.manyOrNone(`
         SELECT c.id, c.company, c.name, c.phone, c.email, 
                e.id expense_id, e.value, e.date, e.client_id
         FROM clients c
@@ -9,13 +9,13 @@ module.exports = {
         ORDER BY c.id, e.date
     `),
     
-    getOne: (clientId) => database.oneOrNone(`
+    getOne: (clientId) => databaseService.oneOrNone(`
         SELECT id, company, name, phone, email 
         FROM clients WHERE id = $1
     `, clientId),
     
     getMonthlyExpense: async (clientId, fullYear, month) => {
-        const monthlyExpense = await database.one(`
+        const monthlyExpense = await databaseService.one(`
             SELECT ROUND(
                 (
                     SUM(value) /
@@ -51,7 +51,7 @@ module.exports = {
                 dateBetween = 'AND date <= $2';
             }
         }
-        return database.manyOrNone(`
+        return databaseService.manyOrNone(`
             SELECT id, value, date
             FROM expenses
             WHERE client_id = $1
@@ -60,7 +60,7 @@ module.exports = {
         `, queryParams)
     },
     
-    insert: async (client) => (await database.one(`
+    insert: async (client) => (await databaseService.one(`
         INSERT INTO clients (\${this:name}) 
         VALUES (\${this:csv}) 
         RETURNING id
@@ -72,15 +72,15 @@ module.exports = {
 
         const tableName = 'clients';
         const updateKeys = Object.keys(_client);
-        const where = database.as.format(' WHERE id = $1', client.id);
+        const where = databaseService.as.format(' WHERE id = $1', client.id);
         const returning = ' RETURNING id, company, name, phone, email';
-        const query = database.helpers.update(client, updateKeys, tableName) + where + returning;
+        const query = databaseService.helpers.update(client, updateKeys, tableName) + where + returning;
 
-        return database.one(query);
+        return databaseService.one(query);
     },
     
     delete: async (clientId) => {
-        const result = await database.oneOrNone(`
+        const result = await databaseService.oneOrNone(`
             DELETE FROM clients 
             WHERE id = $1 
             RETURNING true AS success

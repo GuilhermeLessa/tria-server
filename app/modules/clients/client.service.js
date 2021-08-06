@@ -1,5 +1,5 @@
 
-const dateHelper = require('../../core/date.helper');
+const dateHelper = require('../../core/helpers/date.helper');
 
 const clientSchema = require('./client.schema');
 const clientResolver = require('./client.resolver');

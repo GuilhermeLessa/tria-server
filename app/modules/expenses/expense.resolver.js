@@ -1,5 +1,5 @@
-const infographHelper = require('../../core/infograph.helper');
-const dateHelper = require('../../core/date.helper');
+const infographHelper = require('../../core/helpers/infograph.helper');
+const dateHelper = require('../../core/helpers/date.helper');
 
 module.exports = (expenseService) => ({
     mutations: () => ({
