@@ -6,6 +6,7 @@ module.exports = {
             url = new URL(url);
         } catch (error) {
             onError(error);
+            return;
         }
 
         const req = https.request({
